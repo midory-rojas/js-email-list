@@ -2,22 +2,31 @@
 // https://flynn.boolean.careers/exercises/api/random/mail
 // generare 10 indirizzi email e stamparli in pagina all'interno di una lista.
 
-
-
-
-const listaElment = document.getElementById("lista");
-//console.log("listaElement");
+// Variabile globale
 const total = 10;
-let emails = [];
 
-for (let i = 0; i < total; i++) {
-    axios.get(`https://flynn.boolean.careers/exercises/api/random/mail`)
-        .then(function (resp) {
-            const mail = resp.data.response;
-            emails.push(mail);
-            console.log(mail);
 
-            listaElment.innerHTML += `<li>${mail}</li>`;
-        })
-        
+// Prendo tutti gli elementi
+const listaElement = document.getElementById("lista");
+const emailsBtn = document.querySelector("button");
+
+
+
+emailsBtn.addEventListener("click", emailsList);
+
+function emailsList() {
+    listaElement.innerHTML ="";
+    const emails = [];
+    
+    for (let i = 0; i < total; i++) {
+        axios.get(`https://flynn.boolean.careers/exercises/api/random/mail`)
+            .then(function (resp) {
+                const mail = resp.data.response;
+                emails.push(mail);
+                console.log(mail);
+                listaElement.innerHTML += `<li>${mail}</li>`;
+            })
+
+    }
+
 };
