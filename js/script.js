@@ -18,8 +18,6 @@ for (let i = 0; i < total; i++) {
             console.log(mail);
 
             listaElment.innerHTML += `<li>${mail}</li>`;
-        
-        
         })
         
 };
